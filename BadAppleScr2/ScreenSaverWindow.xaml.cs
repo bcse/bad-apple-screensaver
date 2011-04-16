@@ -31,26 +31,61 @@ namespace BadAppleScr2
             VideoElement.Stretch = App.Config.Stretch;
         }
 
-        void OnLoaded(object sender, RoutedEventArgs e)
+        void ScreenSaverWindow_Loaded(object sender, RoutedEventArgs e)
         {
 #if DEBUG
 #else
+            bool bSuccess = Mouse.Capture(this);
+            bSuccess = this.CaptureMouse();
             ShowInTaskbar = false;
             Cursor = Cursors.None;
             Topmost = true;
+            MouseMove += new MouseEventHandler(ScreenSaverWindow_MouseMove);
+            MouseDown += new MouseButtonEventHandler(ScreenSaverWindow_MouseDown);
+            KeyDown += new KeyEventHandler(ScreenSaverWindow_KeyDown);
 #endif
+        }
+
+        void ScreenSaverWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        void ScreenSaverWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        bool isActive;
+        Point mousePosition;
+        void ScreenSaverWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point currentPosition = e.MouseDevice.GetPosition(this);
+            // Set IsActive and MouseLocation only the first time this event is called.
+            if (!isActive)
+            {
+                mousePosition = currentPosition;
+                isActive = true;
+            }
+            else
+            {
+                // If the mouse has moved significantly since first call, close.
+                if ((Math.Abs(mousePosition.X - currentPosition.X) > 10) ||
+                    (Math.Abs(mousePosition.Y - currentPosition.Y) > 10))
+                {
+                    Application.Current.Shutdown();
+                }
+            }
         }
 
         void VideoElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            MediaElement me = sender as MediaElement;
-            me.Position = TimeSpan.Zero;
+            VideoElement.Position = TimeSpan.Zero;
         }
 
         void VideoElement_MediaOpened(object sender, RoutedEventArgs e)
         {
-            MediaElement me = sender as MediaElement;
-            me.Effect = fx;
+            VideoElement.Effect = fx;
         }
     }
 }
