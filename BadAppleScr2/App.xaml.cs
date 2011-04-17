@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace BadAppleScr2
 {
@@ -10,6 +11,7 @@ namespace BadAppleScr2
     public partial class App : Application
     {
         internal static Config Config = Config.Open(string.Format("{0}{1}BadAppleScr{1}config.xml", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), System.IO.Path.DirectorySeparatorChar));
+        internal static Regex re_arg = new Regex(@"/([CPS])(?:[\s:](\d+))?", RegexOptions.Compiled);
 
         internal void BadAppleScr2_Startup(object sender, StartupEventArgs e)
         {
@@ -20,25 +22,30 @@ namespace BadAppleScr2
         {
             if (args.Length > 0)
             {
-                // Get the 2 character command line argument 
-                string arg = args[0].ToUpperInvariant().Trim().Substring(0, 2);
-                switch (arg)
+                // Parse command line argument 
+                Match match = re_arg.Match(args[0].ToUpperInvariant().Trim());
+                if (match.Success)
                 {
-                    case "/C":
-                        // Show the options dialog
-                        ShowConfig();
-                        break;
-                    case "/P":
-                        // Don't do anything for preview 
-                        Application.Current.Shutdown();
-                        break;
-                    case "/S":
-                        // Show screensaver form 
-                        ShowScreensaver();
-                        break;
-                    default:
-                        Application.Current.Shutdown();
-                        break;
+                    string action = match.Groups[1].Value;
+                    //IntPtr hwnd = (match.Groups[2].Value.Length > 0) ? (IntPtr)int.Parse(match.Groups[2].Value) : IntPtr.Zero;
+                    switch (action)
+                    {
+                        case "C":
+                            // Show the options dialog
+                            ShowConfig();
+                            break;
+                        case "P":
+                            // Don't do anything for preview
+                            Application.Current.Shutdown();
+                            break;
+                        case "S":
+                            // Show screensaver form
+                            ShowScreensaver();
+                            break;
+                        default:
+                            Application.Current.Shutdown();
+                            break;
+                    }
                 }
             }
             else
