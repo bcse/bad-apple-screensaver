@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace BadAppleScr2
 {
