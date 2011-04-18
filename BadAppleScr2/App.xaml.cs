@@ -10,7 +10,7 @@ namespace BadAppleScr2
     /// </summary>
     public partial class App : Application
     {
-        internal static Config Config = Config.Open(string.Format("{0}{1}BadAppleScr{1}config.xml", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), System.IO.Path.DirectorySeparatorChar));
+        internal static Config Config = Config.Open(string.Format("{0}{1}BadAppleScr{1}config.json", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), System.IO.Path.DirectorySeparatorChar));
         internal static Regex re_arg = new Regex(@"/([CPS])(?:[\s:](\d+))?", RegexOptions.Compiled);
 
         internal void BadAppleScr2_Startup(object sender, StartupEventArgs e)

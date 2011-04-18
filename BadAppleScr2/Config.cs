@@ -1,24 +1,23 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Xml;
 
 namespace BadAppleScr2
 {
     [DataContract]
     public class Config
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public double Volume = 1d;
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public double Chrominance = 0d;
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public System.Windows.Media.Stretch Stretch = System.Windows.Media.Stretch.UniformToFill;
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public System.Uri Video = new System.Uri(@"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv");
 
         static string file_path = null;
@@ -34,14 +33,8 @@ namespace BadAppleScr2
 
             try
             {
-                using (Stream stream = new MemoryStream(Encoding.ASCII.GetBytes(File.ReadAllText(path))))
-                {
-                    stream.Position = 0;
-                    XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas());
-                    DataContractSerializer ser = new DataContractSerializer(typeof(Config));
-                    cfg = (Config)ser.ReadObject(reader, true);
-                    reader.Close();
-                }
+                string json = File.ReadAllText(path, Encoding.Unicode);
+                cfg = Serialize<Config>.FromJsonString(json);
             }
             catch (SerializationException)
             {
@@ -62,21 +55,30 @@ namespace BadAppleScr2
 
         public void Save(string path)
         {
-            try
-            {
-                if (!Directory.Exists(Path.GetDirectoryName(path)))
-                    Directory.CreateDirectory(Path.GetDirectoryName(path));
-
-                using (Stream writer = new FileStream(path, FileMode.Create))
-                {
-                    DataContractSerializer ser = new DataContractSerializer(typeof(Config));
-                    ser.WriteObject(writer, this);
-                }
-            }
-            catch (Exception)
-            {                
-                throw;
-            }
+            if (!Directory.Exists(Path.GetDirectoryName(path)))
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+            string json = Serialize<Config>.ToJsonString(this);
+            File.WriteAllText(path, json, Encoding.Unicode);
         }
     }
+
+    public class Serialize<T> where T : class
+    {
+        static DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+        static MemoryStream stream;
+
+        public static string ToJsonString(T graph)
+        {
+            stream = new MemoryStream();
+            serializer.WriteObject(stream, graph);
+            return Encoding.UTF8.GetString(stream.ToArray());
+        }
+
+        public static T FromJsonString(string json)
+        {
+            stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            return serializer.ReadObject(stream) as T;
+        }
+    }
+
 }
