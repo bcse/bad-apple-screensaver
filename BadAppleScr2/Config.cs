@@ -32,7 +32,7 @@ namespace BadAppleScr2
             Config cfg;
             file_path = path;
 
-            if (File.Exists(path))
+            try
             {
                 using (Stream stream = new MemoryStream(Encoding.ASCII.GetBytes(File.ReadAllText(path))))
                 {
@@ -43,7 +43,11 @@ namespace BadAppleScr2
                     reader.Close();
                 }
             }
-            else
+            catch (SerializationException)
+            {
+                cfg = new Config();
+            }
+            catch (FileNotFoundException)
             {
                 cfg = new Config();
             }
