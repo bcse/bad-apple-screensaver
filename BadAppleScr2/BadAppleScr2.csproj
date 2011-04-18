@@ -59,7 +59,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>C:\Users\bcse\Documents\Visual Studio 2010\Projects\BadAppleScr2\BadAppleScr2\BadAppleScr2.res</Win32Resource>
+    <Win32Resource>BadAppleScr2.res</Win32Resource>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
