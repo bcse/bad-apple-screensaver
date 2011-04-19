@@ -16,7 +16,7 @@
         
         
         <Image Name="monitor" Grid.Column="0" Grid.Row="0" Source="/BadAppleScr2;component/Images/monitor.png" />
-        <MediaElement Name="VideoElement" Margin="77,10,77,54"
+        <MediaElement Name="VideoElement" Margin="76,10,77,53"
                       LoadedBehavior="Play"
                       MediaEnded="VideoElement_MediaEnded" MediaOpened="VideoElement_MediaOpened"
                       >
