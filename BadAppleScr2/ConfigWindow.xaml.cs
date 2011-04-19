@@ -43,15 +43,14 @@ namespace BadAppleScr2
         private void bBrowse_Click(object sender, RoutedEventArgs e)
         {
             // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.DefaultExt = ".mp4"; // Default file extension
-            dlg.Filter = "Video files|*.mp4;*.m4v;*.mp4v;*.3gp;*.3gpp;*.3g2;*.3gp2;*.m2ts;*.m2t;*.mts;*.ts;*.tts;*.mov;*.asf;*.wm;*.wmv;*.avi;*.mpeg;*.mpg;*.m1v;*.m2v;*.mpe;*.ifo;*.vob"; // Filter files by extension
-
-            // Process open file dialog box results
-            if (dlg.ShowDialog() == true)
+            using (System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog())
             {
-                vFile.Text = dlg.FileName;
-                VideoElement.Source = new Uri(dlg.FileName);
+                dlg.Filter = "Video files|*.mp4;*.m4v;*.mp4v;*.3gp;*.3gpp;*.3g2;*.3gp2;*.m2ts;*.m2t;*.mts;*.ts;*.tts;*.mov;*.asf;*.wm;*.wmv;*.avi;*.mpeg;*.mpg;*.m1v;*.m2v;*.mpe;*.ifo;*.vob|All files|*.*"; // Filter files by extension
+                if (System.Windows.Forms.DialogResult.OK == dlg.ShowDialog())
+                {
+                    vFile.Text = dlg.FileName;
+                    VideoElement.Source = new Uri(dlg.FileName);
+                }
             }
         }
 
