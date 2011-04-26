@@ -7,7 +7,8 @@ namespace BadAppleScr2
 {
     public class GrayscaleEffect : ShaderEffect
     {
-        private static PixelShader _pixelShader = new PixelShader() { UriSource = new Uri("/Effect/GrayscaleEffect.ps", UriKind.Relative) };
+        private static readonly PixelShader _pixelShader =
+            new PixelShader() { UriSource = new Uri("/Effect/GrayscaleEffect.ps", UriKind.Relative) };
 
         public GrayscaleEffect()
         {
