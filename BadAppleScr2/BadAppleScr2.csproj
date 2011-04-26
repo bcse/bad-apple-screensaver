@@ -79,6 +79,7 @@
     <Compile Include="ConfigWindow.xaml.cs">
       <DependentUpon>ConfigWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Effect\CompositeEffect.cs" />
     <Compile Include="Effect\GrayscaleEffect.cs" />
     <Compile Include="Interop.cs" />
     <Compile Include="Program.cs" />
@@ -134,6 +135,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Effect\CompositeEffect.fx" />
+    <Resource Include="Effect\CompositeEffect.ps" />
     <None Include="Effect\GrayscaleEffect.fx" />
     <Resource Include="Effect\GrayscaleEffect.ps" />
     <None Include="Properties\Settings.settings">

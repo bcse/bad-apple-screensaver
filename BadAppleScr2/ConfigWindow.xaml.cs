@@ -32,12 +32,37 @@ namespace BadAppleScr2
 
         private void VideoElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            VideoElement.Position = TimeSpan.Zero;
+            MediaElement media = (MediaElement)sender;
+            media.Position = TimeSpan.Zero;
         }
 
         private void VideoElement_MediaOpened(object sender, RoutedEventArgs e)
         {
-            VideoElement.Effect = fx;
+            CompositeEffect fx2 = new CompositeEffect();
+
+            /*
+            MediaElement media1 = new MediaElement()
+            {
+                Source = new Uri(@"I:\Dropbox\Public\video\vibo-telecomlife.mp4"),
+                IsMuted = true,
+                Stretch = Stretch.Uniform
+            };
+            media1.MediaEnded += new RoutedEventHandler(VideoElement_MediaEnded);
+            fx2.Tex1 = new VisualBrush() { Visual = media1 };
+
+            MediaElement media2 = new MediaElement()
+            {
+                Source = new Uri(@"C:\Users\Public\Videos\Sample Videos\Wildlife.wmv"),
+                IsMuted = true,
+                Stretch = Stretch.Uniform
+            };
+            media2.MediaEnded += new RoutedEventHandler(VideoElement_MediaEnded);
+            fx2.Tex2 = new VisualBrush() { Visual = media2 };
+            */
+            fx2.Tex1 = new ImageBrush(new System.Windows.Media.Imaging.BitmapImage(new Uri(@"C:\Users\Public\Pictures\Sample Pictures\Chrysanthemum.jpg")));
+            fx2.Tex2 = new ImageBrush(new System.Windows.Media.Imaging.BitmapImage(new Uri(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg")));
+
+            VideoElement.Effect = fx2;
         }
 
         private void bBrowse_Click(object sender, RoutedEventArgs e)
@@ -66,7 +91,7 @@ namespace BadAppleScr2
 
         private void vChrominance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            fx.Chrominance = vChrominance.Value;
+            //fx.Chrominance = vChrominance.Value;
         }
 
         private void bLink_Click(object sender, MouseButtonEventArgs e)
