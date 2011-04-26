@@ -12,12 +12,12 @@ namespace BadAppleScr2
 
         public CompositeEffect()
         {
-			PixelShader = _pixelShader;
+            PixelShader = _pixelShader;
             PixelShader.InvalidPixelShaderEncountered += new EventHandler(PixelShader_InvalidPixelShaderEncountered);
 
-			UpdateShaderValue(MaskProperty);
-			UpdateShaderValue(Tex1Property);
-			UpdateShaderValue(Tex2Property);
+            UpdateShaderValue(MaskProperty);
+            UpdateShaderValue(Tex1Property);
+            UpdateShaderValue(Tex2Property);
         }
 
         void PixelShader_InvalidPixelShaderEncountered(object sender, EventArgs e)
