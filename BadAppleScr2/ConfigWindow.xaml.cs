@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace BadAppleScr2
 {
@@ -18,6 +19,8 @@ namespace BadAppleScr2
             InitializeComponent();
             Version ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             bLink.Text = string.Format("© \"Bad Apple!!\" Screensaver {0}.{1}", ver.Major, ver.Minor);
+            DesktopBackground.Source = new BitmapImage(new Uri(Interop.GetDesktopWallpaper(), UriKind.Absolute));
+            DesktopBackground.Stretch = Interop.GetWallpaperStretch();
 
             //load settings
             vFile.Text = App.Config.Video.LocalPath;
