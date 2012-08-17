@@ -36,11 +36,7 @@ namespace BadAppleScr2
                 string json = File.ReadAllText(path, Encoding.Unicode);
                 cfg = Serialize<Config>.FromJsonString(json);
             }
-            catch (SerializationException)
-            {
-                cfg = new Config();
-            }
-            catch (FileNotFoundException)
+            catch
             {
                 cfg = new Config();
             }
