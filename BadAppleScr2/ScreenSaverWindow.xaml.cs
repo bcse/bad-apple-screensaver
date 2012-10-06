@@ -25,12 +25,10 @@ namespace BadAppleScr2
         void ScreenSaverWindow_Loaded(object sender, RoutedEventArgs e)
         {
 #if DEBUG
+            ShowInTaskbar = true;
+            Topmost = false;
 #else
-            bool bSuccess = Mouse.Capture(this);
-            bSuccess = this.CaptureMouse();
-            ShowInTaskbar = false;
-            Cursor = Cursors.None;
-            Topmost = true;
+            Mouse.OverrideCursor = Cursors.None;
             MouseMove += new MouseEventHandler(ScreenSaverWindow_MouseMove);
             MouseDown += new MouseButtonEventHandler(ScreenSaverWindow_MouseDown);
             KeyDown += new KeyEventHandler(ScreenSaverWindow_KeyDown);

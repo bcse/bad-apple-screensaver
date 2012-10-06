@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Bad Apple!!" Loaded="ScreenSaverWindow_Loaded"
-        WindowStyle="None" AllowsTransparency="true" Background="Transparent"
-        Icon="1302996309_Computer.ico">
+        WindowStyle="None" AllowsTransparency="true" Background="#01000000"
+        Icon="1302996309_Computer.ico" ShowInTaskbar="False" Topmost="True">
     <MediaElement Name="VideoElement" LoadedBehavior="Play"
                   MediaEnded="VideoElement_MediaEnded" MediaOpened="VideoElement_MediaOpened">
     </MediaElement>
