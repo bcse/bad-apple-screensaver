@@ -12,7 +12,7 @@ namespace BadAppleScr2
     /// </summary>
     public partial class ConfigWindow : Window
     {
-        private GrayscaleEffect fx = new GrayscaleEffect { Chrominance = App.Config.Chrominance };
+        private GrayscaleEffect fx = new GrayscaleEffect { Chrominance = App.Config.Chrominance, Negative = App.Config.Negative };
 
         public ConfigWindow()
         {
@@ -27,6 +27,7 @@ namespace BadAppleScr2
             vVolume.Value = App.Config.Volume;
             vStretch.SelectedIndex = (int)App.Config.Stretch;
             vChrominance.Value = App.Config.Chrominance;
+            vNegative.Value = App.Config.Negative;
 
             VideoElement.Source = App.Config.Video;
             VideoElement.Volume = App.Config.Volume;
@@ -72,6 +73,11 @@ namespace BadAppleScr2
             fx.Chrominance = vChrominance.Value;
         }
 
+        private void vNegative_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            fx.Negative = vNegative.Value;
+        }
+
         private void bLink_Click(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(@"http://blog.bcse.tw/bad-apple-screensaver-2");
@@ -84,6 +90,7 @@ namespace BadAppleScr2
             App.Config.Volume = vVolume.Value;
             App.Config.Stretch = (Stretch)vStretch.SelectedIndex;
             App.Config.Chrominance = vChrominance.Value;
+            App.Config.Negative = vNegative.Value;
             App.Config.Save();
 
             //close window

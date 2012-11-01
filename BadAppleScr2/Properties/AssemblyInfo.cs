@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Bad Apple!!")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Joel Lee")]
+[assembly: AssemblyCompany("Grey Lee")]
 [assembly: AssemblyProduct("“Bad Apple!!” Screen Saver")]
-[assembly: AssemblyCopyright("Copyright © Joel Lee 2011")]
+[assembly: AssemblyCopyright("Copyright © Grey Lee 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -52,4 +52,4 @@ using System.Windows;
 // 指定為預設值:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.4.*")]
-[assembly: AssemblyFileVersion("2.4.0.0")]
+[assembly: AssemblyFileVersion("2.4.4.0")]

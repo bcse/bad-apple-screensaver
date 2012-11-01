@@ -1,7 +1,7 @@
 ﻿<Window x:Class="BadAppleScr2.ConfigWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="&quot;Bad Apple!!&quot; Screensaver" Height="450" Width="400"
+        Title="&quot;Bad Apple!!&quot; Screensaver" Height="480" Width="400"
         ResizeMode="NoResize" Background="White"
         Icon="1302996309_Computer.ico">
     <Grid Margin="0,10,0,0">
@@ -26,6 +26,7 @@
         
         <Grid Grid.Column="0" Grid.Row="1" Margin="20,16">
             <Grid.RowDefinitions>
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -65,13 +66,20 @@
                 <ComboBoxItem>Uniform</ComboBoxItem>
                 <ComboBoxItem>Uniform Fill</ComboBoxItem>
             </ComboBox>
-            
+
             <TextBlock Grid.Column="0" Grid.Row="3"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Text="Saturation"/>
             <Slider Name="vChrominance" Grid.Column="1" Grid.Row="3"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     Minimum="0" Maximum="1" Value="0.5" ValueChanged="vChrominance_ValueChanged" />
+
+            <TextBlock Grid.Column="0" Grid.Row="4"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Text="Negative"/>
+            <Slider Name="vNegative" Grid.Column="1" Grid.Row="4"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Minimum="0" Maximum="1" Value="0.5" ValueChanged="vNegative_ValueChanged" />
         </Grid>
         
         <Border Grid.Column="0" Grid.Row="2"

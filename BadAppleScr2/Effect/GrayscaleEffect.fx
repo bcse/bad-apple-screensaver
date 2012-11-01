@@ -7,6 +7,12 @@
 /// <defaultValue>0.5</defaultValue>
 float chroma : register(c0);
 
+/// <summary>Negative</summary>
+/// <minValue>0</minValue>
+/// <maxValue>1</maxValue>
+/// <defaultValue>0</defaultValue>
+float negative : register(c1);
+
 sampler2D implicitInput : register(s0);
 
 float4 fixLuma(float4 color)
@@ -23,8 +29,17 @@ float4 setChroma(float4 color)
 	return float4(mul(color.rgb, chroma), log10((1 - luma) * 10));
 }
 
+float4 setNegative(float4 color)
+{
+	float3 inversed_rgb = 1 - color.rgb;
+	return float4(lerp(color.rgb, inversed_rgb, negative.xxx), color.a);
+}
+
 float4 main(float2 uv : TEXCOORD) : COLOR
 {
-	float4 color = fixLuma(tex2D(implicitInput, uv));
-	return setChroma(color);
+	float4 color = tex2D(implicitInput, uv);
+	color = fixLuma(color);
+	color = setNegative(color);
+	color = setChroma(color);
+	return color;
 }

@@ -15,6 +15,7 @@ namespace BadAppleScr2
             PixelShader = _pixelShader;
 
             UpdateShaderValue(InputProperty);
+            UpdateShaderValue(NegativeProperty);
             UpdateShaderValue(ChrominanceProperty);
         }
 
@@ -33,6 +34,15 @@ namespace BadAppleScr2
         {
             get { return (double)GetValue(ChrominanceProperty); }
             set { SetValue(ChrominanceProperty, value); }
+        }
+
+        public static readonly DependencyProperty NegativeProperty =
+            DependencyProperty.Register("Negative", typeof(double), typeof(GrayscaleEffect),
+                new UIPropertyMetadata(0.5, PixelShaderConstantCallback(1)));
+        public double Negative
+        {
+            get { return (double)GetValue(NegativeProperty); }
+            set { SetValue(NegativeProperty, value); }
         }
     }
 }

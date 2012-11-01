@@ -10,7 +10,7 @@ namespace BadAppleScr2
     /// </summary>
     public partial class ScreenSaverWindow : Window
     {
-        private static readonly ShaderEffect fx = new GrayscaleEffect { Chrominance = App.Config.Chrominance };
+        private static readonly ShaderEffect fx = new GrayscaleEffect { Chrominance = App.Config.Chrominance, Negative = App.Config.Negative };
 
         public ScreenSaverWindow()
         {

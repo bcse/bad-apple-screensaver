@@ -15,6 +15,9 @@ namespace BadAppleScr2
         public double Chrominance = 0.75d;
 
         [DataMember(IsRequired = true)]
+        public double Negative = 0.0d;
+
+        [DataMember(IsRequired = true)]
         public System.Windows.Media.Stretch Stretch = System.Windows.Media.Stretch.UniformToFill;
 
         [DataMember(IsRequired = true)]
