@@ -18,6 +18,9 @@ namespace BadAppleScr2
         public double Negative = 0.0d;
 
         [DataMember(IsRequired = true)]
+        public bool LeaveBlack = true;
+
+        [DataMember(IsRequired = true)]
         public System.Windows.Media.Stretch Stretch = System.Windows.Media.Stretch.UniformToFill;
 
         [DataMember(IsRequired = true)]

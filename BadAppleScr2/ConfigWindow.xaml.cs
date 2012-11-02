@@ -12,7 +12,12 @@ namespace BadAppleScr2
     /// </summary>
     public partial class ConfigWindow : Window
     {
-        private GrayscaleEffect fx = new GrayscaleEffect { Chrominance = App.Config.Chrominance, Negative = App.Config.Negative };
+        private GrayscaleEffect fx = new GrayscaleEffect
+        {
+            Chrominance = App.Config.Chrominance,
+            Negative = App.Config.Negative,
+            LeaveBlack = App.Config.LeaveBlack
+        };
 
         public ConfigWindow()
         {
