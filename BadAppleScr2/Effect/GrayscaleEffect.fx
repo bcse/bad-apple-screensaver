@@ -32,10 +32,11 @@ float4 setChroma(float4 color)
 	// @see: http://en.wikipedia.org/wiki/Luma_(video)
 	float luma = dot(color.rgb, float3(0.3, 0.59, 0.11));
 
+	float zero = 0;
 	if (black > 0.5)
-		return float4(mul(color.rgb, chroma), log10((1 - luma) * 10));
+		return float4(lerp(zero.xxx, color.rgb, (chroma * (1 - luma)).xxx), log10((1 - luma) * 10));
 	else
-		return float4(lerp(luma.xxx, color.rgb, chroma.xxx), log10(luma * 10));
+		return float4(lerp(luma.xxx, color.rgb, (chroma * luma).xxx), log10(luma * 10));
 }
 
 float4 setNegative(float4 color)

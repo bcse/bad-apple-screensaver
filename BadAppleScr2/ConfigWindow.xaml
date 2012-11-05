@@ -53,7 +53,7 @@
                        Text="Volume"/>
             <Slider Name="vVolume" Grid.Column="1" Grid.Row="1"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    Minimum="0" Maximum="1" Value="0.5" ValueChanged="vVolume_ValueChanged" />
+                    Minimum="0" Maximum="1" Value="0.5" LargeChange="0.1" ValueChanged="vVolume_ValueChanged" />
             
             <TextBlock Grid.Column="0" Grid.Row="2"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -72,14 +72,14 @@
                        Text="Saturation"/>
             <Slider Name="vChrominance" Grid.Column="1" Grid.Row="3"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    Minimum="0" Maximum="1" Value="0.5" ValueChanged="vChrominance_ValueChanged" />
+                    Minimum="0" Maximum="1" Value="0.5" LargeChange="0.1" ValueChanged="vChrominance_ValueChanged" />
 
             <TextBlock Grid.Column="0" Grid.Row="4"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Text="Negative"/>
             <Slider Name="vNegative" Grid.Column="1" Grid.Row="4"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    Minimum="0" Maximum="1" Value="0.5" ValueChanged="vNegative_ValueChanged" />
+                    Minimum="0" Maximum="1" Value="0.5" LargeChange="0.1" ValueChanged="vNegative_ValueChanged" />
         </Grid>
         
         <Border Grid.Column="0" Grid.Row="2"

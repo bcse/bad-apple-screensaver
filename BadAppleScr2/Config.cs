@@ -12,7 +12,7 @@ namespace BadAppleScr2
         public double Volume = 1d;
 
         [DataMember(IsRequired = true)]
-        public double Chrominance = 0.75d;
+        public double Chrominance = 1.0d;
 
         [DataMember(IsRequired = true)]
         public double Negative = 0.0d;
