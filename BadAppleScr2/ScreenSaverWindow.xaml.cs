@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Media.Effects;
 
 namespace BadAppleScr2
@@ -33,6 +35,12 @@ namespace BadAppleScr2
             ShowInTaskbar = true;
             Topmost = false;
 #else
+            // Add WS_EX_TOOLWINDOW window style
+            WindowInteropHelper wndHelper = new WindowInteropHelper(this);
+            int exStyle = (int)NativeMethods.GetWindowLong(wndHelper.Handle, (int)NativeMethods.GetWindowLongFields.GWL_EXSTYLE);
+            exStyle |= (int)NativeMethods.ExtendedWindowStyles.WS_EX_TOOLWINDOW;
+            NativeMethods.SetWindowLong(wndHelper.Handle, (int)NativeMethods.GetWindowLongFields.GWL_EXSTYLE, (IntPtr)exStyle);
+
             Mouse.OverrideCursor = Cursors.None;
             MouseMove += new MouseEventHandler(ScreenSaverWindow_MouseMove);
             MouseDown += new MouseButtonEventHandler(ScreenSaverWindow_MouseDown);
@@ -80,6 +88,14 @@ namespace BadAppleScr2
         void VideoElement_MediaOpened(object sender, RoutedEventArgs e)
         {
             VideoElement.Effect = fx;
+        }
+
+        private void VideoElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            // Show warning
+            Background = new SolidColorBrush(Colors.Black);
+            VideoElement.Visibility = Visibility.Hidden;
+            WarningMessage.Visibility = Visibility.Visible;
         }
     }
 }

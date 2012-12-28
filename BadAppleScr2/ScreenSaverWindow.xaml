@@ -4,7 +4,18 @@
         Title="Bad Apple!!" Loaded="ScreenSaverWindow_Loaded"
         WindowStyle="None" AllowsTransparency="true" Background="#01000000"
         Icon="1302996309_Computer.ico" ShowInTaskbar="False" Topmost="True">
-    <MediaElement Name="VideoElement" LoadedBehavior="Play"
-                  MediaEnded="VideoElement_MediaEnded" MediaOpened="VideoElement_MediaOpened">
-    </MediaElement>
+    <Grid>
+        <MediaElement Name="VideoElement" LoadedBehavior="Play"
+                      MediaEnded="VideoElement_MediaEnded"
+                      MediaOpened="VideoElement_MediaOpened"
+                      MediaFailed="VideoElement_MediaFailed"/>
+        <TextBlock Name="WarningMessage" Visibility="Hidden"
+                   Background="Black" Foreground="Red"
+                   FontFamily="Segoe UI" FontSize="36" FontWeight="Bold"
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            Sorry!<LineBreak/>
+            I can't play this video.<LineBreak/>
+            Please select another one.
+        </TextBlock>
+    </Grid>
 </Window>
