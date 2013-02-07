@@ -24,8 +24,8 @@ Software Requirements & Installation
 Configuration
 -------------
 
-1. Please set the video path before first use.
-2. If you don't know how to set Saturation, I suggest setting Saturation to 0% (left) when you selected a black-and-white video. If you selected a color video, please try setting Saturation to 100% (right).
+1. Please set the video file location before first use.
+2. If you don't know how to set Saturation, try setting Saturation to 0% (leftmost) when you selected a black-and-white video. If you selected a color video, please try setting Saturation to 100% (rightmost).
 
 
 
