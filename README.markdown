@@ -33,14 +33,3 @@ License & Copyright
 -------------------
 
 The source code of this software is licensed under [Apache Software License](http://opensource.org/licenses/apache2.0.php).
-
-
-
-Changelog
----------
-
-* 2011-04-17: Requirement upgrade to .NET Framework 3.5. New configuration window. Fix a critical bug.
-* 2010-11-21: Handle multiple monitor and high DPI situation. Slightly modify color luminance.
-* 2010-11-13: New Settings window.
-* 2010-11-06: Fix a fundamental bug related to volume control.
-* 2010-10-28: First release!
