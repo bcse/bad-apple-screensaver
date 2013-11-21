@@ -33,3 +33,7 @@ License & Copyright
 -------------------
 
 The source code of this software is licensed under [Apache Software License](http://opensource.org/licenses/apache2.0.php).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/bcse/bad-apple-screensaver/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
